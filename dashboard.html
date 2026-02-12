@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LIHTC Analytics Hub</title>
+    <meta name="description" content="Interactive dashboard for LIHTC data, tax credit pricing, and housing market analytics.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">LIHTC Analytics</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="regional.html" class="nav-link">Regional Data</a>
+                <a href="insights.html" class="nav-link">Market Insights</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">LIHTC Market Dashboard</h1>
+                <p class="hero-subtitle">Real-time analytics on tax credit allocations, pricing, and housing development</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="dashboard-filters">
+                <div class="filter-group">
+                    <label for="year-filter">Year</label>
+                    <select id="year-filter">
+                        <option value="2026">2026</option>
+                        <option value="2025" selected>2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="region-filter">Region</label>
+                    <select id="region-filter">
+                        <option value="national">National</option>
+                        <option value="northeast">Northeast</option>
+                        <option value="south">South</option>
+                        <option value="midwest">Midwest</option>
+                        <option value="west">West</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="metric-filter">Primary Metric</label>
+                    <select id="metric-filter">
+                        <option value="allocations">Allocations</option>
+                        <option value="pricing">Pricing</option>
+                        <option value="starts">Housing Starts</option>
+                        <option value="foreclosures">Foreclosures</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="hero-stats" style="margin-bottom: 3rem;">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-allocations">$12.4B</div>
+                    <div class="stat-label">Total LIHTC Allocations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-pricing">$0.94</div>
+                    <div class="stat-label">Avg 9% Credit Price</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="housing-starts">142K</div>
+                    <div class="stat-label">Multifamily Starts (Annual)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="foreclosure-rate">0.8%</div>
+                    <div class="stat-label">LIHTC Foreclosure Rate</div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="dashboard-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">LIHTC Allocations by State</h3>
+                        <p class="chart-subtitle">Top 10 states by total allocation amount</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="allocations-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Tax Credit Pricing Trends</h3>
+                        <p class="chart-subtitle">Historical pricing for 4% and 9% credits</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pricing-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Housing Starts by Quarter</h3>
+                        <p class="chart-subtitle">Multifamily housing construction activity</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="starts-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Competitive vs Non-Competitive</h3>
+                        <p class="chart-subtitle">9% vs 4% credit distribution</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="credit-type-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="chart-card" style="margin-top: 2rem;">
+                <div class="chart-header">
+                    <h3 class="chart-title">Top LIHTC Projects - 2025</h3>
+                    <p class="chart-subtitle">Largest allocations by project</p>
+                </div>
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>State</th>
+                                <th>Units</th>
+                                <th>Credit Type</th>
+                                <th>Allocation</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Parkside Seniors Apartments</td>
+                                <td>CA</td>
+                                <td>156</td>
+                                <td>9%</td>
+                                <td>$18.2M</td>
+                                <td>$0.95</td>
+                            </tr>
+                            <tr>
+                                <td>Downtown Residences Phase II</td>
+                                <td>NY</td>
+                                <td>224</td>
+                                <td>9%</td>
+                                <td>$24.5M</td>
+                                <td>$0.93</td>
+                            </tr>
+                            <tr>
+                                <td>Greenwood Family Housing</td>
+                                <td>TX</td>
+                                <td>180</td>
+                                <td>4%</td>
+                                <td>$8.4M</td>
+                                <td>$0.88</td>
+                            </tr>
+                            <tr>
+                                <td>Metro Transit Village</td>
+                                <td>IL</td>
+                                <td>198</td>
+                                <td>9%</td>
+                                <td>$16.7M</td>
+                                <td>$0.94</td>
+                            </tr>
+                            <tr>
+                                <td>Riverside Commons</td>
+                                <td>FL</td>
+                                <td>142</td>
+                                <td>4%</td>
+                                <td>$7.1M</td>
+                                <td>$0.89</td>
+                            </tr>
+                            <tr>
+                                <td>Liberty Square Renovation</td>
+                                <td>PA</td>
+                                <td>168</td>
+                                <td>9%</td>
+                                <td>$14.9M</td>
+                                <td>$0.92</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Additional Insights -->
+            <div class="dashboard-grid" style="margin-top: 3rem;">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Regional Market Health</h3>
+                        <p class="chart-subtitle">Current trends and indicators</p>
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">Northeast</span>
+                                <span style="color: var(--color-success);">Strong ↑</span>
+                            </div>
+                            <div style="height: 8px; background: var(--color-background-alt); border-radius: 4px; overflow: hidden;">
+                                <div style="width: 85%; height: 100%; background: var(--color-success);"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">South</span>
+                                <span style="color: var(--color-success);">Strong ↑</span>
+                            </div>
+                            <div style="height: 8px; background: var(--color-background-alt); border-radius: 4px; overflow: hidden;">
+                                <div style="width: 78%; height: 100%; background: var(--color-success);"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">Midwest</span>
+                                <span style="color: var(--color-info);">Moderate →</span>
+                            </div>
+                            <div style="height: 8px; background: var(--color-background-alt); border-radius: 4px; overflow: hidden;">
+                                <div style="width: 62%; height: 100%; background: var(--color-info);"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">West</span>
+                                <span style="color: var(--color-success);">Strong ↑</span>
+                            </div>
+                            <div style="height: 8px; background: var(--color-background-alt); border-radius: 4px; overflow: hidden;">
+                                <div style="width: 88%; height: 100%; background: var(--color-success);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Market Alerts</h3>
+                        <p class="chart-subtitle">Recent developments and trends</p>
+                    </div>
+                    <div style="padding: 0.5rem 0;">
+                        <div style="padding: 1rem; background: rgba(39, 174, 96, 0.1); border-left: 3px solid var(--color-success); margin-bottom: 1rem; border-radius: 4px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Credit Pricing Up</div>
+                            <div style="font-size: 0.875rem; color: var(--color-text-light);">9% credits trading at $0.94, up 2¢ from Q4</div>
+                        </div>
+                        <div style="padding: 1rem; background: rgba(52, 152, 219, 0.1); border-left: 3px solid var(--color-info); margin-bottom: 1rem; border-radius: 4px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">New QAP Released</div>
+                            <div style="font-size: 0.875rem; color: var(--color-text-light);">California announces 2026 allocation priorities</div>
+                        </div>
+                        <div style="padding: 1rem; background: rgba(243, 156, 18, 0.1); border-left: 3px solid var(--color-warning); border-radius: 4px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Construction Delays</div>
+                            <div style="font-size: 0.875rem; color: var(--color-text-light);">Material costs impacting starts in 3 states</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 class="footer-title">LIHTC Analytics Hub</h4>
+                    <p class="footer-description">
+                        Providing comprehensive data intelligence for affordable housing finance professionals.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="regional.html">Regional Data</a></li>
+                        <li><a href="insights.html">Market Insights</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.novoco.com" target="_blank">Novoco</a></li>
+                        <li><a href="https://www.huduser.gov/portal/datasets/lihtc.html" target="_blank">HUD LIHTC Database</a></li>
+                        <li><a href="https://www.ncsha.org" target="_blank">NCSHA</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Data Updates</h4>
+                    <p class="footer-description">
+                        Data refreshed quarterly from authoritative sources. Last update: Q1 2026.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 LIHTC Analytics Hub. Educational and informational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
