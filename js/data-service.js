@@ -10,8 +10,8 @@ class LIHTCDataService {
         
         // Current market data (updated to reflect 2026 Q1 conditions)
         this.currentPricing = {
-            '9percent': 0.84,  // Updated to reflect current lower pricing
-            '4percent': 0.79
+            '9percent': 0.87,  // Updated to reflect current lower pricing
+            '4percent': 0.85
         };
     }
 
@@ -151,8 +151,8 @@ class LIHTCDataService {
             
             const data = {
                 current: {
-                    '9percent': 0.84,
-                    '4percent': 0.79,
+                    '9percent': 0.87,
+                    '4percent': 0.85,
                     'state_avg': 0.81
                 },
                 historical: [

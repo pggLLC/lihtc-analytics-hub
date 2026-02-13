@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 datasets: [
                     {
                         label: '9% Credit Price',
-                        data: [0.88, 0.89, 0.90, 0.91, 0.89, 0.88, 0.86, 0.85, 0.84, 0.84],
+                        data: [0.88, 0.89, 0.90, 0.91, 0.89, 0.88, 0.86, 0.85, 0.87, 0.87],
                         borderColor: colors.primary,
                         backgroundColor: 'rgba(26, 58, 82, 0.1)',
                         borderWidth: 3,
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     },
                     {
                         label: '4% Credit Price',
-                        data: [0.84, 0.85, 0.86, 0.87, 0.85, 0.84, 0.82, 0.81, 0.79, 0.79],
+                        data: [0.87, 0.85, 0.86, 0.87, 0.85, 0.87, 0.82, 0.81, 0.79, 0.79],
                         borderColor: colors.accent,
                         backgroundColor: 'rgba(212, 165, 116, 0.1)',
                         borderWidth: 3,
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             '2025': {
                 'national': {
                     allocations: '$12.8B',
-                    pricing: '$0.84',
+                    pricing: '$0.87',
                     starts: '138K',
                     foreclosures: '0.9%'
                 },
