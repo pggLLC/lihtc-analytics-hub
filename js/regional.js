@@ -223,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const metrosByState = {
         'CA': ['Los Angeles-Long Beach', 'San Francisco-Oakland', 'San Diego', 'Sacramento'],
+        'CO': ['Denver-Aurora-Lakewood', 'Colorado Springs', 'Fort Collins', 'Boulder', 'Pueblo'],
         'NY': ['New York-Newark-Jersey City', 'Buffalo-Niagara Falls', 'Rochester'],
         'TX': ['Dallas-Fort Worth', 'Houston-The Woodlands', 'Austin', 'San Antonio'],
         'FL': ['Miami-Fort Lauderdale', 'Tampa-St. Petersburg', 'Orlando'],
@@ -231,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const stateProfiles = {
         'CA': { allocation: '$1.84B', perCapita: '$47', projects: 312, units: '42,680' },
+        'CO': { allocation: '$287M', perCapita: '$49', projects: 78, units: '8,940' },
         'NY': { allocation: '$1.46B', perCapita: '$75', projects: 268, units: '38,120' },
         'TX': { allocation: '$1.29B', perCapita: '$44', projects: 294, units: '45,860' },
         'FL': { allocation: '$987M', perCapita: '$46', projects: 221, units: '32,450' },
