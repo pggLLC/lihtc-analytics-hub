@@ -1,0 +1,327 @@
+LIHTC Analytics Hub - Upgrade Package v1.0
+File Structure & Overview
+═══════════════════════════════════════════════════════════════════════════
+
+lihtc-upgrade/
+│
+├── 📄 README.md (11 KB)
+│   └── Package overview, quick start guide, installation steps
+│
+├── 📄 PACKAGE-SUMMARY.txt (8.7 KB)
+│   └── Complete summary with stats, checklists, quick reference
+│
+├── 📄 DEPLOYMENT-CHECKLIST.md (11 KB)
+│   └── Step-by-step deployment guide with checkboxes
+│
+├── 📁 js/ (3 files, 19.4 KB total)
+│   │
+│   ├── responsive-nav.js (3.2 KB)
+│   │   ├── Fixes dropdown menu on browser resize
+│   │   ├── Auto-detects breakpoint crossing
+│   │   ├── Resets menu states properly
+│   │   └── Mobile hamburger menu handler
+│   │
+│   ├── state-allocations-2026.js (9.3 KB)
+│   │   ├── 50 states + DC complete data
+│   │   ├── 27 confirmed from CSV
+│   │   ├── 23 estimated pending data
+│   │   ├── Per-capita calculations
+│   │   ├── Status tracking (confirmed/estimated)
+│   │   ├── Source metadata
+│   │   ├── API: getStats(), getState(), getStateColor()
+│   │   └── Total allocation: ~$1.34 Billion
+│   │
+│   └── fred-commodities.js (6.9 KB)
+│       ├── 18 construction commodity price series
+│       ├── FRED API integration
+│       ├── Year-over-year change calculations
+│       ├── Project impact calculator
+│       ├── API: getAllCommodities(), calculateProjectImpact()
+│       └── Categories: Steel, Wood, Concrete, Materials, Energy, Labor
+│
+├── 📁 css/ (1 file, 4.0 KB)
+│   │
+│   └── responsive-nav.css (4.0 KB)
+│       ├── Mobile menu styles
+│       ├── Desktop navigation styles
+│       ├── Dropdown menu positioning
+│       ├── Breakpoint handling (768px)
+│       ├── Tablet optimizations (1024px)
+│       └── Resize transition fixes
+│
+└── 📁 docs/ (4 files, 47.3 KB total)
+    │
+    ├── IMPLEMENTATION-GUIDE.md (12 KB)
+    │   ├── Detailed implementation instructions
+    │   ├── Issue-by-issue solutions
+    │   ├── Code examples for all features
+    │   ├── Usage examples with output
+    │   ├── Troubleshooting guide
+    │   ├── Browser compatibility notes
+    │   └── Support information
+    │
+    ├── QUICK-REFERENCE.md (4.3 KB)
+    │   ├── API quick reference
+    │   ├── Installation steps (3-step)
+    │   ├── Code snippets for all features
+    │   ├── Available commodities list
+    │   ├── Map update template
+    │   ├── Troubleshooting quick fixes
+    │   └── Top state allocations list
+    │
+    ├── EXAMPLE-USAGE.html (17 KB)
+    │   ├── Interactive demo page
+    │   ├── State allocation examples
+    │   ├── FRED commodity fetching
+    │   ├── Project impact calculator demo
+    │   ├── Live code execution
+    │   ├── Beautiful dark theme UI
+    │   └── Browser console integration
+    │
+    └── FILE-STRUCTURE.txt (this file)
+        └── Visual package structure overview
+
+═══════════════════════════════════════════════════════════════════════════
+
+QUICK FILE REFERENCE
+═══════════════════════════════════════════════════════════════════════════
+
+Need to...                          → See this file:
+────────────────────────────────────────────────────────────────────────────
+Get started quickly                 → README.md
+Follow step-by-step deployment      → DEPLOYMENT-CHECKLIST.md  
+Find API functions                  → QUICK-REFERENCE.md
+Understand implementation details   → IMPLEMENTATION-GUIDE.md
+Test features interactively         → docs/EXAMPLE-USAGE.html
+See complete package info           → PACKAGE-SUMMARY.txt
+View file structure                 → This file
+
+Fix dropdown menu                   → js/responsive-nav.js + css/
+Work with state data                → js/state-allocations-2026.js
+Fetch commodity prices              → js/fred-commodities.js
+
+═══════════════════════════════════════════════════════════════════════════
+
+FILE SIZES SUMMARY
+═══════════════════════════════════════════════════════════════════════════
+
+Core Files (Required for deployment):
+├── JavaScript:  19.4 KB (3 files)
+├── CSS:          4.0 KB (1 file)
+└── Total:       23.4 KB
+
+Documentation (Reference only):
+├── Markdown:    38.6 KB (4 files)
+├── HTML:        17.0 KB (1 file)
+├── Text:        14.1 KB (2 files)
+└── Total:       69.7 KB
+
+Grand Total: 93.1 KB (10 files)
+
+═══════════════════════════════════════════════════════════════════════════
+
+WHAT EACH FILE DOES
+═══════════════════════════════════════════════════════════════════════════
+
+README.md
+├── First file to read
+├── Package overview
+├── 5-step quick start
+├── What's included/fixed/added
+├── Testing checklist
+├── Browser compatibility
+└── Support information
+
+PACKAGE-SUMMARY.txt
+├── Complete package details
+├── State allocation summary
+├── Installation steps
+├── Testing checklist
+├── Quick API reference
+├── Troubleshooting
+└── Version history
+
+DEPLOYMENT-CHECKLIST.md
+├── Pre-deployment backup steps
+├── File upload instructions
+├── FRED API configuration
+├── HTML update procedure
+├── Map page updates
+├── Complete testing guide
+├── Post-deployment monitoring
+└── Rollback plan
+
+js/responsive-nav.js
+├── Fixes dropdown menu resize bug
+├── Creates mobile toggle button
+├── Handles window resize events
+├── Resets menu state on breakpoint cross
+├── Manages dropdown interactions
+└── No configuration needed - auto-loads
+
+js/state-allocations-2026.js
+├── 50 states + DC data
+├── 27 confirmed (from CSV)
+├── 23 estimated (national avg)
+├── Per-capita calculations
+├── Source: Novogradac
+├── API: getStats(), getState(), getStateColor()
+└── Total: $1.34B allocation
+
+js/fred-commodities.js
+├── 18 commodity price series
+├── FRED API integration
+├── Year-over-year calculations
+├── Project impact calculator
+├── Requires free API key
+├── API: getAllCommodities(), calculateProjectImpact()
+└── Categories: Steel, Wood, Concrete, Materials, Energy, Labor
+
+css/responsive-nav.css
+├── Mobile menu styles
+├── Desktop navigation
+├── Dropdown positioning
+├── Breakpoints: 768px (mobile), 1024px (tablet)
+├── Resize transition handling
+└── Works with responsive-nav.js
+
+docs/IMPLEMENTATION-GUIDE.md
+├── Detailed instructions for each fix
+├── Issue-by-issue breakdown
+├── Code examples with output
+├── Usage scenarios
+├── Complete troubleshooting
+├── Browser testing notes
+└── 50+ pages of documentation
+
+docs/QUICK-REFERENCE.md
+├── 3-step installation
+├── API function reference
+├── Code snippets
+├── Commodity list (18 series)
+├── Map HTML template
+├── Quick troubleshooting
+└── Cheat sheet format
+
+docs/EXAMPLE-USAGE.html
+├── Interactive demo page
+├── Test state allocations
+├── Fetch FRED commodities
+├── Calculate project impacts
+├── Live code execution
+├── Beautiful UI (mid-century dark theme)
+└── Open in browser to test features
+
+FILE-STRUCTURE.txt (this file)
+├── Visual package layout
+├── File descriptions
+├── Size information
+├── Quick reference guide
+└── What each file does
+
+═══════════════════════════════════════════════════════════════════════════
+
+INSTALLATION ORDER
+═══════════════════════════════════════════════════════════════════════════
+
+Step 1: Read First
+  1. README.md (overview)
+  2. DEPLOYMENT-CHECKLIST.md (follow this)
+
+Step 2: Upload Core Files  
+  3. js/responsive-nav.js
+  4. js/state-allocations-2026.js
+  5. js/fred-commodities.js
+  6. css/responsive-nav.css
+
+Step 3: Configure
+  7. Get FRED API key
+  8. Update fred-commodities.js with key
+
+Step 4: Update HTML
+  9. Add script tags to all HTML files
+  10. Update map page title
+  11. Add Novogradac source attribution
+
+Step 5: Test
+  12. Use EXAMPLE-USAGE.html to test features
+  13. Follow testing checklist
+  14. Verify on live site
+
+Step 6: Reference
+  15. Keep QUICK-REFERENCE.md handy
+  16. Refer to IMPLEMENTATION-GUIDE.md for details
+  17. Use PACKAGE-SUMMARY.txt for quick info
+
+═══════════════════════════════════════════════════════════════════════════
+
+MOST IMPORTANT FILES
+═══════════════════════════════════════════════════════════════════════════
+
+🌟 DEPLOYMENT-CHECKLIST.md
+   → Follow this step-by-step to deploy
+
+🌟 js/responsive-nav.js
+   → Fixes the main issue (dropdown menu)
+
+🌟 js/state-allocations-2026.js  
+   → Your CSV data integrated
+
+🌟 QUICK-REFERENCE.md
+   → Keep open while working
+
+═══════════════════════════════════════════════════════════════════════════
+
+WHICH FILE ANSWERS YOUR QUESTION?
+═══════════════════════════════════════════════════════════════════════════
+
+"How do I install this?"
+→ README.md (quick) or DEPLOYMENT-CHECKLIST.md (detailed)
+
+"What's included in this package?"
+→ README.md or PACKAGE-SUMMARY.txt
+
+"How do I use the state data?"
+→ QUICK-REFERENCE.md or IMPLEMENTATION-GUIDE.md
+
+"How do I get FRED commodity prices?"
+→ IMPLEMENTATION-GUIDE.md section #2
+
+"The menu still doesn't work, help!"
+→ IMPLEMENTATION-GUIDE.md troubleshooting section
+
+"What are the API functions?"
+→ QUICK-REFERENCE.md
+
+"Can I test the features before deploying?"
+→ docs/EXAMPLE-USAGE.html
+
+"What's the step-by-step deployment process?"
+→ DEPLOYMENT-CHECKLIST.md
+
+"What changed in this version?"
+→ README.md or PACKAGE-SUMMARY.txt
+
+"Which browsers are supported?"
+→ README.md or IMPLEMENTATION-GUIDE.md
+
+═══════════════════════════════════════════════════════════════════════════
+
+NEXT STEPS
+═══════════════════════════════════════════════════════════════════════════
+
+1. Start with README.md
+2. Follow DEPLOYMENT-CHECKLIST.md
+3. Refer to other docs as needed
+4. Keep QUICK-REFERENCE.md handy
+5. Test with EXAMPLE-USAGE.html
+
+═══════════════════════════════════════════════════════════════════════════
+
+Package created: February 14, 2026
+Version: 1.0
+Total files: 10
+Total size: 93.1 KB
+Installation time: ~25 minutes
+
+═══════════════════════════════════════════════════════════════════════════
