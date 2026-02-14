@@ -4,7 +4,7 @@
 // Version: 1.0 - February 2026
 
 const FREDCommodities = {
-    apiKey: 'YOUR_FRED_API_KEY_HERE', // Get free at: https://research.stlouisfed.org/useraccount/register
+    apiKey: '00f51491752bdb81cfe7f7524ac63da8', // Get free at: https://research.stlouisfed.org/useraccount/register
     baseURL: 'https://api.stlouisfed.org/fred/series/observations',
     
     series: {
