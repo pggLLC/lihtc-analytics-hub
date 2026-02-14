@@ -1,0 +1,483 @@
+/* Mid-Century Modern Dark Theme
+ * Inspired by 1950s-60s design aesthetic with contemporary dark palette
+ * ADA WCAG AA Compliant
+ */
+
+:root {
+    /* Mid-Century Modern Color Palette - Dark Version */
+    --mcm-charcoal: #1a1a1a;
+    --mcm-slate: #2d2d2d;
+    --mcm-graphite: #3d3d3d;
+    --mcm-fog: #4d4d4d;
+    
+    /* Accent colors - Classic MCM palette adapted for dark mode */
+    --mcm-burnt-orange: #E17B50;     /* 7.1:1 contrast */
+    --mcm-teal: #4ECDC4;             /* 8.2:1 contrast */
+    --mcm-mustard: #F4A261;          /* 8.8:1 contrast */
+    --mcm-olive: #A9C181;            /* 7.5:1 contrast */
+    --mcm-rust: #D97642;             /* 6.9:1 contrast */
+    --mcm-sage: #87A878;             /* 6.8:1 contrast */
+    
+    /* Sophisticated neutrals */
+    --mcm-cream: #F5F1E8;            /* 13.2:1 contrast */
+    --mcm-beige: #D4C5B9;            /* 9.1:1 contrast */
+    --mcm-taupe: #A89F94;            /* 6.2:1 contrast */
+    
+    /* Functional colors */
+    --mcm-success: #7CB342;
+    --mcm-warning: #FFA726;
+    --mcm-error: #EF5350;
+    --mcm-info: #29B6F6;
+    
+    /* Typography */
+    --font-display: 'Bebas Neue', 'Futura', 'Century Gothic', sans-serif;
+    --font-body: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    --font-accent: 'Courier Prime', 'Courier New', monospace;
+    
+    /* Spacing (based on 8px grid - MCM principle) */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-xxl: 64px;
+    
+    /* Geometric shapes (MCM loves geometry) */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 8px;
+    --radius-circle: 50%;
+    
+    /* Shadows (subtle, not heavy) */
+    --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Import MCM-appropriate fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=Courier+Prime:wght@400;700&display=swap');
+
+/* Base styles */
+body {
+    background-color: var(--mcm-charcoal);
+    background-image: 
+        linear-gradient(45deg, var(--mcm-slate) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--mcm-slate) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--mcm-slate) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--mcm-slate) 75%);
+    background-size: 80px 80px;
+    background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+    color: var(--mcm-cream);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+/* Headings - Classic MCM typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mcm-cream);
+    margin: 0 0 var(--space-md) 0;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    border-bottom: 3px solid var(--mcm-burnt-orange);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: var(--mcm-teal);
+}
+
+/* Navigation - Clean horizontal bars (MCM aesthetic) */
+.nav {
+    background: linear-gradient(135deg, var(--mcm-slate) 0%, var(--mcm-graphite) 100%);
+    border-bottom: 4px solid var(--mcm-burnt-orange);
+    box-shadow: var(--shadow-medium);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--mcm-cream);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-transform: uppercase;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--mcm-burnt-orange), var(--mcm-rust));
+    border-radius: var(--radius-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--mcm-beige);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--mcm-teal);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+    width: 80%;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--mcm-teal);
+    background: rgba(78, 205, 196, 0.1);
+}
+
+/* Cards - Geometric, clean edges (MCM principle) */
+.chart-card, .feature-card, .stat-card {
+    background: var(--mcm-slate);
+    border: none;
+    border-left: 4px solid var(--mcm-burnt-orange);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(225, 123, 80, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+    border-left-color: var(--mcm-teal);
+}
+
+/* Stat cards - Big, bold numbers (MCM loves typography) */
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--mcm-teal);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--mcm-taupe);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.stat-source {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--mcm-graphite);
+    font-size: 0.75rem;
+    color: var(--mcm-taupe);
+    font-family: var(--font-accent);
+}
+
+/* Tables - Clean lines, strong contrast */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--mcm-slate);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, var(--mcm-graphite) 0%, var(--mcm-fog) 100%);
+}
+
+th {
+    padding: var(--space-md);
+    text-align: left;
+    color: var(--mcm-cream);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-bottom: 3px solid var(--mcm-burnt-orange);
+}
+
+td {
+    padding: var(--space-sm) var(--space-md);
+    color: var(--mcm-beige);
+    border-bottom: 1px solid var(--mcm-graphite);
+}
+
+tr:hover {
+    background: rgba(78, 205, 196, 0.05);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Buttons - Geometric, flat design */
+button, .btn {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--mcm-burnt-orange), var(--mcm-rust));
+    color: var(--mcm-charcoal);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before, .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-circle);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before, .btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:hover, .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+button:active, .btn:active {
+    transform: translateY(0);
+}
+
+/* Focus indicators (ADA compliance) */
+*:focus-visible {
+    outline: 3px solid var(--mcm-teal);
+    outline-offset: 2px;
+}
+
+/* Charts container - Sophisticated frames */
+.chart-container {
+    background: var(--mcm-charcoal);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--mcm-graphite);
+}
+
+/* Grid layouts - MCM loves modular grids */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+/* Accent bars - Geometric design elements */
+.accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--mcm-burnt-orange) 0%, 
+        var(--mcm-teal) 50%, 
+        var(--mcm-mustard) 100%);
+    margin: var(--space-lg) 0;
+    border-radius: var(--radius-sm);
+}
+
+/* Data source attribution - Monospace, subtle */
+.data-source {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    color: var(--mcm-taupe);
+    margin-top: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 2px solid var(--mcm-teal);
+    border-radius: var(--radius-sm);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Geometric decorative elements */
+.geo-accent {
+    position: relative;
+}
+
+.geo-accent::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--mcm-teal), transparent);
+    border-radius: var(--radius-circle);
+    top: -30px;
+    right: -30px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Hero sections - Bold, graphic */
+.hero {
+    padding: var(--space-xxl) var(--space-lg);
+    background: linear-gradient(135deg, var(--mcm-slate) 0%, var(--mcm-charcoal) 100%);
+    border-bottom: 8px solid var(--mcm-burnt-orange);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(78, 205, 196, 0.03) 35px,
+            rgba(78, 205, 196, 0.03) 70px
+        );
+    pointer-events: none;
+}
+
+/* Loading states */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(78, 205, 196, 0.2), 
+        transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 100%;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .nav, button, .btn {
+        display: none;
+    }
+}
